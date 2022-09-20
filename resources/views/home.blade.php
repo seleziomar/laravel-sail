@@ -193,7 +193,7 @@
             class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4"
         >
             <div class="flex flex-auto justify-center items-center">
-                <h2>Seja bem-bindo!</h2>
+                <h2>Seja bem-vindo!</h2>
             </div>
         </div>
       </div>
