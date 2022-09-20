@@ -30,13 +30,11 @@
         <div
           class="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg"
         >
-          <div class="h-20 w-20 rounded-full border overflow-hidden">
-            <img
-              src="https://avatars3.githubusercontent.com/u/2763884?s=128"
-              alt="Avatar"
-              class="h-full w-full"
-            />
-          </div>
+
+            <div
+            class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 flex-shrink-0"
+            >   {{$user->avatar}}
+            </div>
           <div class="text-sm font-semibold mt-2">{{$user->name}}</div>
           <div class="text-xs text-gray-500">{{$user->email}}</div>
 
