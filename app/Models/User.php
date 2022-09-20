@@ -57,4 +57,11 @@ class User extends Authenticatable
     {
         return $this->name[0];
     }
+
+    public function chat_contact($rooms_id, $user)
+    {
+        return $this->whereNotIn('id', function($q) use($rooms_id, $user){
+            return $q->select('room_user.user_id')->from('room_user')->whereIn('room_user.room_id', $rooms_id)->where('user_id', '<>', $user->id);
+        })->where('users.id', '<>', $user->id)->get();
+    }
 }

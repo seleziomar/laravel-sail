@@ -10,7 +10,7 @@ class Room extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['active'];
-    protected $appends = ['user'];
+    // protected $appends = ['user'];
 
     public function messages()
     {
@@ -33,5 +33,11 @@ class Room extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function user()
+    {
+        return $this->hasOneThrough(User::class, RoomUser::class, 'room_id', 'id', 'id', 'user_id')
+                ->where('users.id', '<>', auth()->user()->id);
     }
 }

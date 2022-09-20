@@ -50,7 +50,7 @@
                 <template x-for="room in rooms" >
 
                     <button @click="setRoom(room.id)"
-                        :class="{ 'bg-gray-100': room.id == currentRoom }"
+                        :class="{ 'bg-gray-100' : room.id === currentRoom }"
                     class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2"
                     >
                         <div x-text="room.user.avatar"
@@ -267,6 +267,8 @@
                     index = this.rooms.findIndex((room) => room.id == this.currentRoom);
                     if(index >= 0) this.rooms[index].unread = 0;
                 }
+
+                console.log(this.currentRoom);
 
             },
             initRoom(id, name){

@@ -11,14 +11,13 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $usersNot = [$user->id];
-        $rooms = $user->rooms()->get();
+        $rooms = $user->rooms()->with('user')->get();
 
-        foreach($rooms as $room){
-            $usersNot[] = $room->user['id'];
-        }
+        $rooms_id = $rooms->pluck('id')->toArray();
 
-        $users = User::whereNotIn('id', $usersNot)->get();
+        $model = new User();
+        $users = $model->chat_contact($rooms_id, $user);
+
         return view('home', compact('rooms', 'users', 'user'));
     }
 }
